@@ -1,0 +1,8 @@
+export const showMenu = 'showMenu'
+export const showModal = 'showModal'
+export const fetchProjectSuccess = 'fetchProjectSuccess'
+export const fetchProjectFailure = 'fetchProjectFailure'
+export const fetchProjectsSuccess = 'fetchProjectsSuccess'
+export const fetchProjectsFailure = 'fetchProjectsFailure'
+export const preloader = 'preloader'
+export const clickOutside = 'clickOutside'
