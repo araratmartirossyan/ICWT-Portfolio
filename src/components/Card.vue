@@ -1,7 +1,7 @@
 <template>
   <div class="card" @click="fetchProject(project.id)">
     <div class="overlay" :style="getBackground()">
-      <span>{{pathOr('', ['text'], project)}}</span>
+      <span>{{ pathOr('', ['text'], project) }}</span>
     </div>
   </div>
 </template>
