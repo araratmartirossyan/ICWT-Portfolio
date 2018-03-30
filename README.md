@@ -1,16 +1,12 @@
-# InCodeWeTrust Portfolio
+# <InCodeWeTrust /> Portfolio WebSite
 
-> A Portfolio project
+> A Portfolio project for ICWT
 
-````
+## For start
+```
 yarn
-```
 
-```
-yarn start
-```
+yarn start - development mode
 
-```
-yarn build
-```
- 
+yarn build - production mode
+``` 
