@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <card
-      v-for="(index, key) in projects"
+      v-for="(project, key) in projects"
       :key="key"
-      :project="index"
+      :project="project"
     >
     </card>
   </div>
@@ -25,8 +25,8 @@ export default {
 </script>
 
 <style lang="stylus">
-    .container
-      display flex
-      justify-content space-around
-      flex-wrap wrap
+  .container
+    display flex
+    justify-content space-around
+    flex-wrap wrap
 </style>

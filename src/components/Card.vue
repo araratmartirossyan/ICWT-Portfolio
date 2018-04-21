@@ -1,7 +1,13 @@
 <template>
-  <div class="card" @click="fetchProject(project.id)">
-    <div class="overlay" :style="getBackground()">
-      <span>{{ pathOr('', ['text'], project) }}</span>
+  <div
+    class="card"
+    @click="fetchProject(project.id)"
+  >
+    <div
+      class="overlay"
+      :style="getBackground()"
+    >
+      <span>{{ pathOr('', ['description'], project) }}</span>
     </div>
   </div>
 </template>
@@ -20,9 +26,9 @@ export default {
     ...mapActions(['fetchProject']),
     getBackground() {
       return `
-        background: url('${pathOr('', ['project', 'image'], this)}'), linear-gradient(white, rgba(58, 58, 58, 0.3215686274509804)); 
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(58, 58, 58, 1)), url('${pathOr('', ['project', 'image'], this)}'); 
         background-size: cover;
-        background-position: 100% 100%;
+        background-position: top;
       `
     }
   }
@@ -35,6 +41,7 @@ export default {
     width 33.33333%
     transition-delay 0.65s
     transition color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out
+    flex 1 auto
 
     span
       bottom 0
@@ -49,4 +56,12 @@ export default {
     display flex
     height calc(40vh - 2em)
     background-blend-mode multiply
+
+  @media screen and (min-width: 768px) and (max-width: 1199px)
+    .card
+      width 50%
+
+  @media screen and (min-width: 320px) and (max-width: 767px)
+    .card
+      width 100%
 </style>
