@@ -14,7 +14,7 @@ const state = {
 
 const getters = {
   project: () => state.project,
-  projects: () => state.projects
+  projects: () => state.projects.filter(item => item.title)
 }
 
 const mutations = {

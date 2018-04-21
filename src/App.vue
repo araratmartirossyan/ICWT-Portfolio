@@ -36,6 +36,13 @@ export default {
     ...mapMutations(['clickOutside']),
     ...mapActions(['fetchProjects'])
   },
+  watch: {
+    showModal() {
+      const body = document.getElementById('body')
+      const style = this.showModal ? 'overflow: hidden' : 'overflow: auto'
+      body.setAttribute('style', style)
+    }
+  },
   mounted() {
     this.fetchProjects()
   }
