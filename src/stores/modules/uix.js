@@ -34,7 +34,7 @@ const mutations = {
     state[loading] = true
   },
   [types.fetchProjectSuccess](sub, { project }) {
-    state.project = project.val()
+    state.project = project
     state.isLoading = false
     state.showModal = true
     state.showMenu = false
@@ -44,7 +44,7 @@ const mutations = {
     state.isError = error
   },
   [types.fetchProjectsSuccess](sub, { projects }) {
-    state.projects = projects.val()
+    state.projects = projects
     state.isLoading = false
   },
   [types.fetchProjectsFailure](sub, { error }) {
@@ -56,13 +56,13 @@ const mutations = {
 const actions = {
   fetchProject({ commit }, id) {
     commit('preloader', 'isLoading')
-    clientApi(`projects/${id}`)
+    clientApi('get', id)
       .then(project => commit('fetchProjectSuccess', { project }))
       .catch(error => commit('fetchProjectFailure', { error }))
   },
   fetchProjects({ commit }) {
     commit('preloader', 'isLoading')
-    clientApi('projects')
+    clientApi('get')
       .then(projects => commit('fetchProjectsSuccess', { projects }))
       .catch(error => commit('fetchProjectsFailure', { error }))
   }

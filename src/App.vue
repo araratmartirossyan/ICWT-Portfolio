@@ -54,6 +54,7 @@ export default {
 
   body {
     margin-bottom: 4em;
+    background: #000;
   }
 
   #app {

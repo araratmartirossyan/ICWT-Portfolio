@@ -1,25 +1,15 @@
 /* eslint-disable */
-import firebase from 'firebase'
+import axios from 'axios'
 
-const clientApi = url => {
-	const ref = firebase.database()
-	return ref.ref(url).once('value')
-}
+const API = 'http://atleasrx.beget.tech/api/v1/posts'
 
-const clientApiPush = (url, data) => {
-	const ref = firebase.database()
-	return ref.ref(url).push(data)
-}
+const returnUrl = url => url ? `${API}/${url}` : API
 
-const clientApiPut = (url, data) => {
-	const ref = firebase.database()
-	return ref.ref(url).update(data)
-}
-
-const clientApiDelete = url => {
-	const ref = firebase.database()
-	return ref.ref(url).remove()
-}
+const clientApi = (method, url, params) =>
+	new Promise((resolve, reject) =>
+		axios[method](returnUrl(url), { ...params })
+			.then(({ data }) => resolve(data))
+	)
 
 export {
   clientApi,
