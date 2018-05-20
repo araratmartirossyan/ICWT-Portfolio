@@ -3,13 +3,13 @@
     class="card"
     @click="fetchProject(project.id)"
   >
-      <div
-        class="overlay"
-        :style="getBackground()"
-      >
-        <div :style="getLogo()" />
-        <span>{{ pathOr('', ['description'], project) }}</span>
-      </div>
+    <div
+      class="overlay"
+      :style="getBackground()"
+    >
+      <div :style="getLogo()" />
+      <span>{{ pathOr('', ['description'], project) }}</span>
+    </div>
   </div>
 </template>
 
