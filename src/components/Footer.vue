@@ -1,8 +1,8 @@
 <template>
   <div class="footer">
     <h2>{{logo}}</h2>
-    <a @click="handleShowMenu">
-      About us
+    <a @click="handleClick">
+      {{ $route.path === '/' ? 'Contact us' : 'Portfolio' }}
       <fa :icon="icon" />
     </a>
   </div>
@@ -20,6 +20,12 @@ export default {
     icon: () => faInfoCircle
   },
   methods: {
+    handleClick() {
+      const { path } = this.$route
+      return path === '/' ?
+        this.handleShowMenu() :
+        this.$router.push('/')
+    },
     ...mapMutations({
       handleShowMenu: 'showMenu'
     })
@@ -47,14 +53,21 @@ export default {
 
     a
       color #fff
-      margin 0
+      border 1px solid
+      width 10%
+      height 40px
+      margin-right 10px
+      border-radius 4px
+      display flex
+      justify-content center
+      align-items center
       cursor pointer
-      padding-right 15px
 
       &:hover
-        color #d23232
+        background #fff
+        color #000
 
       svg
-        vertical-align: bottom;
-
+        vertical-align bottom
+        margin-left 5px
 </style>
