@@ -1,25 +1,54 @@
 <template>
   <div class="contact-container">
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSeDSd3WuSw1bkg7YsnQzpJzfDlUg8rh-dScAsCbEvXNJ9TTog/viewform?embedded=true"
-      width="640"
-      height="600"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
-    >
-      Загрузка...
-    </iframe>
+    <h2>Let's Talk</h2>
+    <ContactForm
+      :formMock="formMock"
+      :formFields="contactForm"
+      :formErrors="formErrors"
+      @updateValue="handleSetForm"
+      @submitForm="handleSendForm"
+    />
   </div>
 </template>
+
+<script>
+import { mapState, mapActions, mapMutations } from 'vuex'
+import { formMock } from '@/mocks/contactForm.mock'
+import ContactForm from './Form'
+
+export default {
+  name: 'Contact Page',
+  components: {
+    ContactForm
+  },
+  data: () => ({
+    formMock
+  }),
+  computed: {
+    ...mapState({
+      contactForm: ({ contactForm }) => contactForm.contactForm,
+      formErrors: ({ contactForm }) => contactForm.formErrors,
+    })
+  },
+  methods: {
+    ...mapMutations([
+      'handleSetForm'
+    ]),
+    ...mapActions([
+      'handleSendForm'
+    ])
+  }
+}
+</script>
 
 <style lang="stylus">
   .contact-container
     display flex
-    justify-content center
-    margin-top 5%
+    align-items center
+    flex-direction column
 
-  iframe .freebirdFormviewerViewFooterEmbeddedBackground
-    display none
+    h2
+      color #fff
+      font-size 3em
 </style>
 

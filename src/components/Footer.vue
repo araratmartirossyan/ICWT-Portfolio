@@ -22,9 +22,8 @@ export default {
   methods: {
     handleClick() {
       const { path } = this.$route
-      return path === '/' ?
-        this.handleShowMenu() :
-        this.$router.push('/')
+      const route = path === '/' ? '/contact' : '/'
+      this.$router.push(route)
     },
     ...mapMutations({
       handleShowMenu: 'showMenu'

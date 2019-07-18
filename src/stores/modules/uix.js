@@ -54,17 +54,23 @@ const mutations = {
 }
 
 const actions = {
-  fetchProject({ commit }, id) {
+  async fetchProject({ commit }, id) {
     commit('preloader', 'isLoading')
-    clientApi('get', id)
-      .then(project => commit('fetchProjectSuccess', { project }))
-      .catch(error => commit('fetchProjectFailure', { error }))
+    try {
+      const project = await clientApi('get', id)
+      await commit('fetchProjectSuccess', { project })
+    } catch (error) {
+      commit('fetchProjectFailure', { error })
+    }
   },
-  fetchProjects({ commit }) {
+  async fetchProjects({ commit }) {
     commit('preloader', 'isLoading')
-    clientApi('get')
-      .then(projects => commit('fetchProjectsSuccess', { projects }))
-      .catch(error => commit('fetchProjectsFailure', { error }))
+    try {
+      const projects = await clientApi('get')
+      await commit('fetchProjectsSuccess', { projects })
+    } catch (error) {
+      commit('fetchProjectsFailure', { error })
+    }
   }
 }
 
