@@ -10,7 +10,7 @@
       @updateValue="handleSetForm"
       @submitForm="handleSendForm"
     />
-    <div class="contact-success"  v-else>
+    <div class="contact-success" v-else>
       <h2>Our manager will contact you soon.</h2>
     </div>
 
@@ -57,5 +57,9 @@ export default {
     h2
       color #fff
       font-size 3em
+
+    .contact-success
+      text-align center
+
 </style>
 

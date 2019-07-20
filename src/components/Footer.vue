@@ -69,4 +69,9 @@ export default {
       svg
         vertical-align bottom
         margin-left 5px
+
+  @media screen and (max-width: 600px)
+    .footer a
+      width 25%
+      padding 0 10px
 </style>

@@ -88,5 +88,11 @@ export default {
 
   .md-12
     width 100%
+
+
+  @media screen and (max-width: 600px)
+    input
+      padding 0
+      padding-left 10px
 </style>
 

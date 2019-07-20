@@ -76,4 +76,8 @@ export default {
 
     &:focus
       border 2px solid #d23232
+
+  @media screen and (max-width: 600px)
+    textarea
+      padding 10px 0 0 10px
 </style>

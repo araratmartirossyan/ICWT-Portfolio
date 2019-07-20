@@ -79,4 +79,14 @@ export default {
     border-radius 0
     width 30%
     float right
+
+  @media screen and (max-width: 600px)
+    .form
+      width 90%
+
+      .submit-btn
+        width 100%
+
+      .form--fieldset
+        padding 0
 </style>
