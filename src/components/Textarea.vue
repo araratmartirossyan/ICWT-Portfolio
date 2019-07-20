@@ -49,7 +49,7 @@ export default {
     isInvalid: {
       default: false,
       type: [Boolean, String]
-    },
+    }
   }
 }
 </script>

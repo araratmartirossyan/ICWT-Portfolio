@@ -79,7 +79,6 @@ export default {
 
     &:focus
       border 2px solid #d23232
-      
 
   .md-4
     width 33%

@@ -27,7 +27,7 @@ export default {
   computed: {
     ...mapState({
       contactForm: ({ contactForm }) => contactForm.contactForm,
-      formErrors: ({ contactForm }) => contactForm.formErrors,
+      formErrors: ({ contactForm }) => contactForm.formErrors
     })
   },
   methods: {

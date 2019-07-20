@@ -57,7 +57,7 @@ const actions = {
   async fetchProject({ commit }, id) {
     commit('preloader', 'isLoading')
     try {
-      const project = await clientApi('get', id)
+      const { post: project } = await clientApi('get', `posts/${id}`)
       await commit('fetchProjectSuccess', { project })
     } catch (error) {
       commit('fetchProjectFailure', { error })
@@ -66,7 +66,7 @@ const actions = {
   async fetchProjects({ commit }) {
     commit('preloader', 'isLoading')
     try {
-      const projects = await clientApi('get')
+      const projects = await clientApi('get', 'posts')
       await commit('fetchProjectsSuccess', { projects })
     } catch (error) {
       commit('fetchProjectsFailure', { error })

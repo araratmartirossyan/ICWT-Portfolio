@@ -46,7 +46,7 @@ const actions = {
   async sendFormRequest({ commit }) {
     commit('preloader', 'isLoading')
     try {
-      await clientApi('post', { ...state.contactForm })
+      await clientApi('post', 'lids', { ...state.contactForm })
       await commit('setFormSuccess')
     } catch (error) {
       commit('setFormFailure', { error })
