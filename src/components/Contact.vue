@@ -1,13 +1,19 @@
 <template>
   <div class="contact-container">
-    <h2>Let's Talk</h2>
+    <h2 v-if="!formSuccess">Let's Talk</h2>
+    <h2 v-else>Thank you</h2>
     <ContactForm
+      v-if="!formSuccess"
       :formMock="formMock"
       :formFields="contactForm"
       :formErrors="formErrors"
       @updateValue="handleSetForm"
       @submitForm="handleSendForm"
     />
+    <div class="contact-success"  v-else>
+      <h2>Our manager will contact you soon.</h2>
+    </div>
+
   </div>
 </template>
 
@@ -27,7 +33,8 @@ export default {
   computed: {
     ...mapState({
       contactForm: ({ contactForm }) => contactForm.contactForm,
-      formErrors: ({ contactForm }) => contactForm.formErrors
+      formErrors: ({ contactForm }) => contactForm.formErrors,
+      formSuccess: ({ contactForm }) => contactForm.formSuccess
     })
   },
   methods: {

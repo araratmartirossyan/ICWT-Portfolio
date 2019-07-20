@@ -50,6 +50,9 @@ const mutations = {
   [types.fetchProjectsFailure](sub, { error }) {
     state.isLoading = false
     state.isError = error
+  },
+  togglePreloader() {
+    state.isLoading = !state.isLoading
   }
 }
 

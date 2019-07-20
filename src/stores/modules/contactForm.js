@@ -9,7 +9,8 @@ const state = {
     story: ''
   },
   formErrors: {
-  }
+  },
+  formSuccess: false
 }
 
 const mutations = {
@@ -17,7 +18,6 @@ const mutations = {
     state.contactForm[key] = value
   },
   setFormSuccess() {
-    state.isLoading = false
     state.formSuccess = true
   },
   setFormFailure(_, { error }) {
@@ -48,6 +48,7 @@ const actions = {
     try {
       await clientApi('post', 'lids', { ...state.contactForm })
       await commit('setFormSuccess')
+      await commit('togglePreloader', { root: true })
     } catch (error) {
       commit('setFormFailure', { error })
     }
