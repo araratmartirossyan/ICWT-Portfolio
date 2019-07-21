@@ -5,10 +5,10 @@
   >
     <div
       class="overlay"
-      :style="getBackground()"
+      :style="getBackground"
     >
-      <div :style="getLogo()" />
-      <span>{{ pathOr('', ['description'], project) }}</span>
+      <div :style="getLogo" />
+      <span>{{ description }}</span>
     </div>
   </div>
 </template>
@@ -19,12 +19,17 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'card',
-  data: () => ({ pathOr }),
+  data: () => ({
+    lang: localStorage.getItem('lang')
+  }),
   props: {
     project: Object
   },
-  methods: {
-    ...mapActions(['fetchProject']),
+  computed: {
+    description() {
+      const field = this.lang === 'en' ? 'descriptionEn' : 'description'
+      return this.project[field]
+    },
     getLogo() {
       return `
         background-image: url('${pathOr('', ['project', 'logo'], this)}'); 
@@ -43,6 +48,9 @@ export default {
         background-position: top;
       `
     }
+  },
+  methods: {
+    ...mapActions(['fetchProject'])
   }
 }
 </script>

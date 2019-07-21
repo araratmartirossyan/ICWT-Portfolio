@@ -29,7 +29,6 @@ export const validateAccount = (form) => {
       errors[field] = errorMessages[field]
     }
   })
-  debugger
   return {
     errors,
     isValid: isEmpty(errors)

@@ -2,19 +2,23 @@
   <div class="footer">
     <h2>{{logo}}</h2>
     <a @click="handleClick">
-      {{ $route.path === '/' ? 'Contact us' : 'Portfolio' }}
+      {{ $route.path === '/' ? inter.footerButton : inter.footerPortfolio }}
       <fa :icon="icon" />
     </a>
   </div>
 </template>
 
 <script>
+import inter from '@/mocks/languageInterface'
 import { faInfoCircle } from '@fortawesome/fontawesome-free-solid'
 import { mapMutations } from 'vuex'
 
+const lang = localStorage.getItem('lang')
+
 export default {
   data: () => ({
-    logo: '<InCodeWeTrust />'
+    logo: '<InCodeWeTrust />',
+    inter: inter[lang]
   }),
   computed: {
     icon: () => faInfoCircle
@@ -72,6 +76,6 @@ export default {
 
   @media screen and (max-width: 600px)
     .footer a
-      width 25%
+      width 40%
       padding 0 10px
 </style>

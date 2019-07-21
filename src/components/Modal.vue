@@ -17,8 +17,8 @@
                   />
                 </div>
                 <div class="_content-wrapper">
-                  <h2 class="right-part__title"> {{ project.title }} </h2>
-                  <p class="right-part__text"> {{ project.text }} </p>
+                  <h2 class="right-part__title"> {{ getTitle }} </h2>
+                  <p class="right-part__text"> {{ getText }} </p>
                 </div>
               </div>
             </slot>
@@ -34,6 +34,8 @@
 import { faTimes } from '@fortawesome/fontawesome-free-solid'
 import { mapMutations, mapState, mapGetters } from 'vuex'
 
+const isEn = localStorage.getItem('lang') === 'en'
+
 export default {
   computed: {
     ...mapState({
@@ -41,6 +43,14 @@ export default {
       modal: state => state.uix.modalName
     }),
     ...mapGetters(['project']),
+    getTitle() {
+      const { title, titleEn } = this.project
+      return isEn ? titleEn : title
+    },
+    getText() {
+      const { text, textEn } = this.project
+      return isEn ? textEn : text
+    },
     closeIcon: () => faTimes
   },
   methods: {
