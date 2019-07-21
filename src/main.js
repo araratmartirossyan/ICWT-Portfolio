@@ -28,6 +28,9 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>',
+  mounted() {
+    const { language } = window.navigator
+    localStorage.setItem('lang', language)
+  },
   render: h => h(App)
 })
