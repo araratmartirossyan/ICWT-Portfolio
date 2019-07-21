@@ -23,9 +23,14 @@ import { formMock } from '@/mocks/contactForm.mock'
 import ContactForm from './Form'
 
 export default {
-  name: 'Contact Page',
+  name: 'ContactPage',
   components: {
     ContactForm
+  },
+  watch: {
+    formMock() {
+      return this.formMock
+    }
   },
   data: () => ({
     formMock
